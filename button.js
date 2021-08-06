@@ -19,4 +19,5 @@ function Button() {
   `;
 }
 
-export default component(Button);
+
+customElements.define("mul-button", component(Button));
