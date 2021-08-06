@@ -4,7 +4,7 @@ import {
   useState,
 } from "https://unpkg.com/haunted/haunted.js";
 
-function Button() {
+function MulButton() {
   const [name, setName] = useState("Add to Favorites");
 
   return html`
@@ -20,4 +20,4 @@ function Button() {
 }
 
 
-customElements.define("mul-button", component(Button));
+customElements.define("mul-button", component(MulButton));
