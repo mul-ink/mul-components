@@ -8,7 +8,7 @@ export default function useTextFolding(hooks){
     const textWrapperRef = useRef();
 
     useEffect(() => {
-      const { current } = descriptionWrapperRef;
+      const { current } = textWrapperRef;
       const handleResize = () => {
         if (current && (current.clientWidth < current.scrollWidth || current.clientHeight < current.scrollHeight)) {
           setNeedToGrow(true);
