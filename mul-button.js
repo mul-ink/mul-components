@@ -2,7 +2,7 @@ import {
   html,
   component,
   useState,
-} from "https://unpkg.com/haunted/haunted.js";
+} from "./deps.js";
 
 function MulButton() {
   const [name, setName] = useState("Add to Favorites");

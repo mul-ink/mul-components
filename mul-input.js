@@ -3,8 +3,8 @@ import {
   component,
   useState,
   useEffect,
-} from 'https://cdn.skypack.dev/haunted';
-import 'https://deno.land/x/mulink@0.0.4/mul-button.js'
+} from './deps.js';
+import './mul-button.js'
 
 function MulInputs(el) {
   const [first, setFirst] = useState('John');

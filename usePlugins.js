@@ -1,5 +1,4 @@
-import { useRef } from "https://unpkg.com/haunted/haunted.js";
-import { useUpdateInstance } from './useUpdateInstance';
+import { useRef } from "./deps.js";
 
 export default function usePlugins(props, ...customPlugins){
   const instanceRef = useRef({});

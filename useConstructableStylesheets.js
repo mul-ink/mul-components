@@ -1,6 +1,5 @@
 // from https://github.com/whoisryosuke/spooky-ui/blob/master/packages/hooks/src/useConstructableStylesheets.js
-import { useLayoutEffect } from "https://unpkg.com/haunted/haunted.js";
-import { supportsAdoptingStyleSheets } from 'https://cdn.skypack.dev/lit';
+import { useLayoutEffect, supportsAdoptingStyleSheets } from "./deps.js";
 
 export default function useConstructableStylesheets(el, styles) {
   /**

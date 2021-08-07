@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "https://unpkg.com/haunted/haunted.js";
+import { useState, useEffect, useRef } from "./deps.js";
 
 export default function useTextFolding(hooks){
   const useInstance = (instance) => {
