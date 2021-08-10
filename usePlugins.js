@@ -1,6 +1,6 @@
 import { useRef } from "./deps.js";
 
-export default function usePlugins(props, ...customPlugins){
+export function usePlugins(props, ...customPlugins){
   const instanceRef = useRef({});
   const useGetLatest = (obj) => {
     const ref = useRef();

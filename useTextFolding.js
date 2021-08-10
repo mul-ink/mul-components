@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "./deps.js";
 
-export default function useTextFolding(hooks){
+export function useTextFolding(hooks){
   const useInstance = (instance) => {
     const { text, collapsed: isCollapsed = true, isFetching } = instance;
     const [collapsed, setCollapsed] = useState(isCollapsed);
