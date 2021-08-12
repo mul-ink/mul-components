@@ -1,19 +1,17 @@
-import { useCSS, html, css, component } from 'https://deno.land/x/mulink@0.0.16/deps.js';
+import { useCSS, html, css, component } from './deps.js';
 function MulButton(element) {
   useCSS(element, [mulButtonCss])
   return html`
-    ${buttonTemplate(element)}
+  ${buttonTemplate(element)}
   `
 }
-
-const buttonTemplate = ({ disabled, onclick}) => html`
-    <button type="button" ?disabled=${disabled} @click=${onclick}>
-      <slot></slot>
-    </button>
-`
-
 MulButton.observedAttributes = ['disabled', 'onclick']
 
+const buttonTemplate = ({ disabled, onclick}) => html`
+<button type="button" ?disabled=${disabled} @click=${onclick}>
+  <slot></slot>
+</button>
+`
 
 const mulDefaultButton = css`
 button {
@@ -46,7 +44,7 @@ button:focus {
 `
 
 const mulButtonCss = css`
-  ${mulDefaultButton}
+${mulDefaultButton}
 `
 
 customElements.define("mul-button", component(MulButton))
