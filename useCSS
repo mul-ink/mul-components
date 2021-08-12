@@ -1,7 +1,7 @@
 // from https://github.com/whoisryosuke/spooky-ui/blob/master/packages/hooks/src/useConstructableStylesheets.js
 import { useLayoutEffect, supportsAdoptingStyleSheets } from "./deps.js";
 
-export function useConstructableStylesheets(el, styles) {
+export function useCSS(el, styles) {
   /**
    * Applies styling to the element shadowRoot using the [[`styles`]]
    * property. Styling will apply using `shadowRoot.adoptedStyleSheets` where
