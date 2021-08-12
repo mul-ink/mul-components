@@ -1,22 +1,20 @@
 import {
   html,
   component,
-  useState,
   css,
   useCSS,
-} from "https://deno.land/x/mulink@0.0.16/deps.js";
+} from "https://deno.land/x/mulink@0.0.16/deps.js"
 
-function MulButton({ disabled }) {
-  const [name, setName] = useState("Add to Favorites");
-  useCSS(this, [mulButtonCss]);
+function MulButton({ disabled, onclick }) {
+  useCSS(this, [mulButtonCss])
   return html`
-    <button .disabled=${disabled} type="button" @click=${(ev) => setName("Added, thanks")}>
-      ${name}
+    <button type="button" ?disabled=${disabled} @click=${onclick}>
+      <slot></slot>
     </button>
-  `;
+  `
 }
 
-MulButton.observedAttributes = ['disabled']
+MulButton.observedAttributes = ['disabled', 'onclick']
 
 
 const mulDisabledButton = css`
@@ -38,4 +36,4 @@ const mulButtonCss = css`
   ${mulDisabledButton}
 `
 
-customElements.define("mul-button", component(MulButton));
+customElements.define("mul-button", component(MulButton))
