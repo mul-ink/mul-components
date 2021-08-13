@@ -4,13 +4,13 @@ const render = async (html) => {
 };
 
 describe('Credit card form', () => {
-  it('renders Test app', async () => {
+  it('renders Mul app', async () => {
     await render('<mul-app></mul-app>');
     const element = await page.$('mul-app');
     const text = await page.evaluate(
       (el) => el.shadowRoot?.textContent,
       element,
     );
-    expect(text).toStrictEqual(expect.stringContaining('Test app'));
+    expect(text).toStrictEqual(expect.stringContaining('Mul app'));
   });
 });

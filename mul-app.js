@@ -8,7 +8,7 @@ function MulApp(element) {
 }
 
 const appTemplate = () => html`
-<mul-button>Test app</mul-button>
+<mul-button>Mul app</mul-button>
 `
 
 customElements.define("mul-app", component(MulApp))
