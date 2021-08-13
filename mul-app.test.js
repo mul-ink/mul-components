@@ -3,8 +3,8 @@ const render = async (html) => {
   await page.setContent(html);
 };
 
-describe('Credit card form', () => {
-  it('renders Mul app', async () => {
+describe('<mul-app>', () => {
+  it('renders Mul app text inside', async () => {
     await render('<mul-app></mul-app>');
     const element = await page.$('mul-app');
     const text = await page.evaluate(
