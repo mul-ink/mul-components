@@ -1,0 +1,29 @@
+{
+  "name": "mulink",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deps.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "start": "http-server --cors"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/expect-puppeteer": "^4.4.6",
+    "@types/jest-environment-puppeteer": "^4.4.1",
+    "@types/puppeteer": "^5.4.4",
+    "jest": "^27.0.6",
+    "jest-dev-server": "^5.0.3",
+    "jest-puppeteer": "^5.0.4",
+    "puppeteer": "^9.1.1"
+  },
+  "jest": {
+    "globalSetup": "./global-setup.js",
+    "globalTeardown": "./global-teardown.js",
+    "preset": "jest-puppeteer"
+  }
+}
