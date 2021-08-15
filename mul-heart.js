@@ -1,5 +1,5 @@
 import { useCSS, html, css, component } from 'https://deno.land/x/mulink@0.0.18/deps.js';
-import { icon__size, icon__default, icon__active } from './icon__size';
+import { icon__size, icon__default, icon__active } from './mul-heart-icon.js';
 
 function MulHeart(element) {
   const onClick = () => element.classList.toggle('active')
