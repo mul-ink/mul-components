@@ -3,17 +3,18 @@
     console.log('Hello scriplet!');    
 })();
 
-/// reddit
+/// stadia-skip
 (() => {
 const waitForElementByText = (text) => new Promise(resolve => {
+    const element = document.evaluate(`//button[contains(., '${text}')]`, document, null, XPathResult.ANY_TYPE, null ).iterateNext()
     
-    if (document.querySelector(selector)) {
-        return resolve(document.querySelector(selector));
+    if (element) {
+        return document.evaluate(`//button[contains(., '${text}')]`, document, null, XPathResult.ANY_TYPE, null ).iterateNext()
     }
 
-    const observer = new MutationObserver(mutations => {
-        if (document.querySelector(selector)) {
-            resolve(document.querySelector(selector));
+    const observer = new MutationObserver(() => {
+        if (element) {
+            resolve(element);
             observer.disconnect();
         }
     });
