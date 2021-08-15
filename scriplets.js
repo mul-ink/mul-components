@@ -5,7 +5,7 @@
 
 /// stadia-skip
 (() => {
-const waitForElementByText = (text) => new Promise(resolve => {
+const queryByText = (text) => new Promise(resolve => {
     const element = document.evaluate(`//button[contains(., '${text}')]`, document, null, XPathResult.ANY_TYPE, null ).iterateNext()
     
     if (element) {
@@ -24,5 +24,5 @@ const waitForElementByText = (text) => new Promise(resolve => {
         subtree: true
     });
 });
-const continueOnBrowser = document.evaluate("//button[contains(., 'Continue')]", document, null, XPathResult.ANY_TYPE, null ).iterateNext();
+const skipSurvey = await queryByText('Skip');
 })();
