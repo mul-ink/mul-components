@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="importmap">
+    {
+        "imports": {
+        "./": "https://deno.land/x/mulink@0.0.22/"
+        }
+    }
+</script>
+<style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+</style>
 <script type="module">
 import './mul_heart.js';
 </script>
-<style>
-    body {
-        width: 100vw;
-        height: 100vh;
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
 <mul-heart></mul-heart>
 </html>
