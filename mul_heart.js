@@ -1,5 +1,5 @@
 import { useCSS, html, css, component } from './deps.js';
-import { icon__size, mul__heart__icon, mul__heart__icon__active } from './mul__heart__icon.js';
+import { icon_size, mul_heart_icon, mul_heart_icon_active } from './mul_heart_icon.js';
 
 function MulHeart(element) {
   const onClick = () => element.classList.toggle('active')
@@ -21,9 +21,9 @@ const mulHeart = css`
 }
 
 .heart {
-  width: ${icon__size};
-  height: ${icon__size};
-  background-image: url(${mul__heart__icon});
+  width: ${icon_size};
+  height: ${icon_size};
+  background-image: url(${mul_heart_icon});
   background-repeat: no-repeat;
   background-size: 100%;
   transition: background-image 0.2s ease;
@@ -33,7 +33,7 @@ const mulHeart = css`
 }
 
 .heart:active {
-  background-image: url(${mul__heart__icon__active});
+  background-image: url(${mul_heart_icon_active});
   opacity: 1;
 }
 
