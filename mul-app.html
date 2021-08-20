@@ -4,13 +4,21 @@
 <script type="module">
 import './mul-app.js';
 </script>
+<script type="module">
+  import { css, useCSS, useEffect } from './deps.js';
+  const bodyCSS = css`
+      body {
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(26, 18, 18);
+        width: 20rem;
+      }
+      `
+  const bodyStyle = document.getElementsByTagName('style')[0];
+  bodyStyle.innerHTML = bodyCSS.cssText;
+</script>
 <style>
-    body {
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(26, 18, 18);
-    width: 20rem;
-  }
+
 </style>
 <body>
     <mul-app></mul-app>
