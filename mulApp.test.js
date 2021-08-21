@@ -6,7 +6,7 @@ const render = async (html) => {
 describe('<mul-app>', () => {
   it('renders Mul app text inside', async () => {
     await render('<mul-app></mul-app>');
-    const element = await page.$('mul-app');
+    const element = await page.$('mulApp');
     const text = await page.evaluate(
       (el) => el.shadowRoot?.textContent,
       element,

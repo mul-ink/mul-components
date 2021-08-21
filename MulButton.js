@@ -1,6 +1,10 @@
 import { useCSS, html, css, component } from './deps.js';
+import {
+  bodyShortFontSize1, boxShadow, activePrimary, bodyShortFontWeight1, bodyShortLineHeight1, bodyShortLetterSpacing1,
+  disabled2, disabled3, focus, interactive1, spacing3, spacing8, spacing9, text4
+} from './cssTokens.js';
 function MulButton(element) {
-  useCSS(element, [mulButtonCss])
+  useCSS(element, [mulDefaultButton])
   return html`
   ${buttonTemplate(element)}
   `
@@ -15,36 +19,32 @@ const buttonTemplate = ({ disabled, onclick}) => html`
 
 const mulDefaultButton = css`
 button {
-  height: var(--mul-spacing-09);
-  padding-right: var(--mul-spacing-08);
-  padding-left: var(--mul-spacing-03);
-  background-color: var(--mul-interactive-01);
-  color: var(--mul-text-04);
-  font-size: var(--mul-body-short-01-font-size);
-  font-weight: var(--mul-body-short-01-font-weight);
-  line-height: var(--mul-body-short-01-line-height);
-  letter-spacing: var(--mul-body-short-01-letter-spacing);
+  height: ${spacing9};
+  padding-right: ${spacing8};
+  padding-left: ${spacing3};
+  background-color: ${interactive1};
+  color: ${text4};
+  font-size: ${bodyShortFontSize1};
+  font-weight: ${bodyShortFontWeight1};
+  line-height: ${bodyShortLineHeight1};
+  letter-spacing: ${bodyShortLetterSpacing1};
   border: transparent;
   cursor: pointer;
 }
 button:active {
-  background-color: var(--mul-active-primary);
+  background-color: ${activePrimary};
   cursor: default;
 }
 button:disabled {
-  border-color: var(--mul-disabled-02,#c6c6c6);
-  background: var(--mul-disabled-02,#c6c6c6);
-  color: var(--mul-disabled-03,#8d8d8d);
+  border-color: ${activePrimary};
+  background: ${disabled2};
+  color: ${disabled3};
   cursor: default;
 }
 button:focus {
-  border-color: var(--mul-focus,#0f62fe);
-  box-shadow: inset 0 0 0 1px var(--mul-focus,#0f62fe),inset 0 0 0 2px var(--mul-ui-background,#f4f4f4);
+  border-color: ${focus};
+  box-shadow: ${boxShadow};
 }
-`
-
-const mulButtonCss = css`
-${mulDefaultButton}
 `
 
 customElements.define("mul-button", component(MulButton))
