@@ -1,6 +1,6 @@
 import { useCSS, html, css, component } from './deps.js';
 import { iconColor } from './cssTokens.js'
-import { heartIcon } from './mulHeartIcon.js'
+import { heartIcon, heartLikeAnimation, heartNotLiked } from './mulHeartIcon.js'
 
 function MulHeart(element) {
   const onClick = () => element.classList.toggle('active')

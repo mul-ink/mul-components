@@ -1,0 +1,38 @@
+{
+    "id": "root",
+    "states": {
+        "Egg Timer": {
+            "id": "Egg Timer",
+            "states": {
+                "Stopped": {
+                    "id": "Stopped",
+                    "states": {},
+                    "on": {
+                        "wind forward": "#Done?"
+                    }
+                },
+                "Ticking": {
+                    "id": "Ticking",
+                    "states": {},
+                    "on": {
+                        "tick": "#Done?",
+                        "wind backward": "#Done?",
+                        "wind forward": "#Done?"
+                    }
+                },
+                "Done?": {
+                    "id": "Done?",
+                    "states": {},
+                    "on": {
+                        "no time remaining?": "#Stopped",
+                        "time remaining?": "#Ticking"
+                    }
+                }
+            },
+            "initial": "Stopped",
+            "on": {}
+        }
+    },
+    "initial": "Egg Timer",
+    "on": {}
+}
