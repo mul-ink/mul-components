@@ -13,21 +13,21 @@ function MulHeart(element) {
 }
 
 const mulHeart = css`
-.heart {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  opacity: 0.6;
-  display: block;
-}
+  .heart {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0.6;
+    display: block;
+  }
 
-.heartIcon {
-  fill: ${iconColor};
-}
+  .heartIcon {
+    fill: ${iconColor};
+  }
 
-.heart:hover {
- opacity: 1;
-}
+  .heart:hover {
+  opacity: 1;
+  }
 `
 
 customElements.define("mul-heart", component(MulHeart))

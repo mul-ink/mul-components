@@ -1,7 +1,8 @@
 import { css, html, render } from './deps.js';
 import { darkBackground } from './cssTokens.js';
+
 const bodyCSS = css`
-body {
+  body {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,10 +10,10 @@ body {
     width: 300px;
     height: 100vh;
     margin-left: 250px;
-}
+  }
 `
 const twoButtons = css`
-body {
+  body {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,14 +21,14 @@ body {
     width: 300px;
     height: 100vh;
     margin-left: 250px;
-}
+  }
 `
 
 const demoStyle = html`
-<style>
+  <style>
     ${bodyCSS}
     ${twoButtons}
-</style>
+  </style>
 `
 const head = document.head || document.getElementsByTagName('head')[0];
 render(demoStyle, head);
