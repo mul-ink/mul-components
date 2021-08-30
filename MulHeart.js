@@ -1,14 +1,16 @@
-import { useCSS, html, css, component } from './deps.js';
+import { useCSS, html, css, component, useState } from './deps.js';
 import { iconColor } from './cssTokens.js'
-import { heartIcon, heartLikeAnimation, heartNotLiked } from './mulHeartIcon.js'
+import { heartLiked, heartNotLiked } from './mulHeartIcon.js'
 
 function MulHeart(element) {
-  const onClick = () => element.classList.toggle('active')
+  const [isLiked, setIsLiked] = useState(true)
+  const onClick = () => setIsLiked(!isLiked);
+  const heart = isLiked ? heartLiked : heartNotLiked
   useCSS(element, [mulHeart])
   return html`
-  <span @click=${onClick} class="heart" id="toggle-btn">
-    ${heartIcon}
-  </span>
+    <span @click=${onClick} class="heart" id="toggle-btn">
+      ${heart}
+    </span>
   `
 }
 

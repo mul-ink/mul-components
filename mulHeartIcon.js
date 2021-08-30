@@ -1,6 +1,6 @@
 import { html } from "./deps.js";
 
-export const heartIcon = html`
+export const heartLiked = html`
   <svg
     xmlns="http://www.w3.org/2000/svg"
     role="img"
