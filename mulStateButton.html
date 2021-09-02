@@ -1,0 +1,38 @@
+<!-- Use xstate 4.23.1 to creat HTML button with transitions through data- HTML attributes -->
+<!-- https://cdn.skypack.dev/xstate -->
+<!DOCTYPE html>
+<html>
+<mul-state></mul-state>
+
+<script type="module">
+import { html, component, useRef } from './deps.js'
+import { useMachine } from './useMachine.js'
+import { counterMachine } from './mulMachine.js'
+
+function mulState(element) {
+    const { state, send } = useMachine(counterMachine)
+
+    const onMinus = () => {
+      send('DEC')
+    }
+    const onPlus = () => {
+      send('INC')
+    }
+    const countValue = 0;
+    return html`
+    <button @click=${onPlus}>
+        <span>+</span>
+    </button>
+    <button @click=${onMinus}>
+        <span>-</span>
+    </button>
+    <span>Count: ${state.context.count}</span>
+    `
+}
+
+customElements.define('mul-state', component(mulState))
+
+</script>
+
+</html>
+<!-- end -->
