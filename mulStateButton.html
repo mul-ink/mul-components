@@ -4,6 +4,7 @@
 <html>
 <script type="module">
 import 'https://deno.land/x/mulink@0.0.25/demoSetup.js'
+import 'https://deno.land/x/mulink@0.0.25/MulButton.js'
 import { html, component, useRef, createMachine, assign } from 'https://deno.land/x/mulink@0.0.25/deps.js'
 import { useMachine } from 'https://deno.land/x/mulink@0.0.25/useMachine.js'
 
@@ -30,12 +31,12 @@ function mulState(element) {
     }
     const countValue = 0;
     return html`
-    <button @click=${onPlus}>
+    <mul-button @click=${onPlus}>
         <span>➕</span>
-    </button>
-    <button @click=${onMinus}>
+    </mul-button>
+    <mul-button @click=${onMinus}>
         <span>➖</span>
-    </button>
+    </mul-button>
     <span>Count: ${state.context.count}</span>
     <style>
     span {
