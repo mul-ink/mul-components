@@ -4,7 +4,7 @@ import {
   useState,
   useEffect,
 } from './deps.js';
-import './mul-button.js'
+import './mulButton.js'
 
 function MulInputs(el) {
   const [first, setFirst] = useState('John');
