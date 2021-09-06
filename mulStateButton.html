@@ -2,16 +2,26 @@
 <!-- https://cdn.skypack.dev/xstate -->
 <!DOCTYPE html>
 <html>
-<mul-state></mul-state>
-
 <script type="module">
-import { html, component, useRef } from './deps.js'
-import { useMachine } from './useMachine.js'
-import { counterMachine } from './mulMachine.js'
+import 'https://deno.land/x/mulink@0.0.25/demoSetup.js'
+import { html, component, useRef, createMachine, assign } from 'https://deno.land/x/mulink@0.0.25/deps.js'
+import { useMachine } from 'https://deno.land/x/mulink@0.0.25/useMachine.js'
+
+const INC = { actions: assign({ count: (context) => context.count + 1 }) }
+const DEC = { actions: assign({ count: (context) => context.count - 1 }) }
+
+export const counterMachine = createMachine({
+    initial: 'active',
+    context: {
+      count: 0
+    },
+    states: {
+      active: { on: {INC, DEC}}
+    }
+  });
 
 function mulState(element) {
     const { state, send } = useMachine(counterMachine)
-
     const onMinus = () => {
       send('DEC')
     }
@@ -21,18 +31,23 @@ function mulState(element) {
     const countValue = 0;
     return html`
     <button @click=${onPlus}>
-        <span>+</span>
+        <span>➕</span>
     </button>
     <button @click=${onMinus}>
-        <span>-</span>
+        <span>➖</span>
     </button>
     <span>Count: ${state.context.count}</span>
+    <style>
+    span {
+      color: white;
+    }
+    </style>
     `
 }
-
 customElements.define('mul-state', component(mulState))
-
 </script>
+   
+<mul-state></mul-state>
 
 </html>
 <!-- end -->
