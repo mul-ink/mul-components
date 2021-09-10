@@ -1,0 +1,39 @@
+<!-- Use xstate 4.23.1 to creat HTML button with transitions through data- HTML attributes -->
+<!-- https://cdn.skypack.dev/xstate -->
+<!DOCTYPE html>
+<html>
+<script type="module">
+import 'https://deno.land/x/mulink@0.0.25/demoSetup.js'
+import 'https://deno.land/x/mulink@0.0.25/MulButton.js'
+import { html, component, useRef, createMachine, assign } from 'https://deno.land/x/mulink@0.0.25/deps.js'
+import { useMachine } from 'https://deno.land/x/mulink@0.0.25/useMachine.js'
+
+export const likeMachine = createMachine({
+    initial: 'unliked',
+    states: {
+      unliked: {},
+      liking: {},
+      liked: {},
+      unliking: {}
+    }
+  });
+
+function mulState(element) {
+    const { state, send } = useMachine(likeMachine)
+    const onLike = () => {
+      send('INC')
+    }
+    const countValue = 0;
+    return html`
+    <mul-button @click=${onLike}>
+        <span>➕</span>
+    </mul-button>
+    `
+}
+customElements.define('mul-state', component(mulState))
+</script>
+   
+<mul-state></mul-state>
+
+</html>
+<!-- end -->
