@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="module">
-    import 'https://deno.land/x/mulink@0.0.29/demoButton.js'
     import { iconColor } from 'https://deno.land/x/mulink@0.0.29/cssTokens.js'
     import { hearts } from 'https://deno.land/x/mulink@0.0.29/mulHeartIcon.js'
     import { html, component, css, useCSS, assign, createMachine } from 'https://deno.land/x/mulink@0.0.25/deps.js'
     import { useMachine } from 'https://deno.land/x/mulink@0.0.29/useMachine.js'
-
-    const likeMachine = createMachine({
-        initial: 'unliked',
-        states: {
-            unliked: { on: { toggle: 'liking' } },
-            liking: { after: { 600: 'liked' } },
-            liked: { on: { toggle: 'unliking' } },
-            unliking: { after: { 600: 'unliked' } }
-        }
-    });
 
     function MulHeart(element) {
         const { state, send } = useMachine(likeMachine)
@@ -28,6 +17,16 @@
     </span>
   `
     }
+
+    const likeMachine = createMachine({
+        initial: 'unliked',
+        states: {
+            unliked: { on: { toggle: 'liking' } },
+            liking: { after: { 600: 'liked' } },
+            liked: { on: { toggle: 'unliking' } },
+            unliking: { after: { 600: 'unliked' } }
+        }
+    });
 
     const mulHeart = css`
   .heart {
@@ -54,8 +53,14 @@
     :root {
         --dark-background: #1a1212;
     }
+
     body {
-        background: var(--dark-background)
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--dark-background);
+        height: 300px;
     }
 </style>
+
 </html>
