@@ -17,4 +17,5 @@ const demoStyle = html`
   </style>
 `
 const head = document.head || document.getElementsByTagName('head')[0];
+
 render(demoStyle, head);
