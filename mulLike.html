@@ -11,22 +11,22 @@ import { useMachine } from 'https://deno.land/x/mulink@0.0.25/useMachine.js'
 export const likeMachine = createMachine({
     initial: 'unliked',
     states: {
-      unliked: {},
-      liking: {},
-      liked: {},
-      unliking: {}
+      unliked: { on: { toggle: 'liking'}},
+      liking: { after: { 600: 'liked'} },
+      liked: { on: { toggle: 'unliking'}},
+      unliking: { after: { 600: 'unliked'}}
     }
   });
 
 function mulState(element) {
     const { state, send } = useMachine(likeMachine)
-    const onLike = () => {
-      send('INC')
+    const onToggle = () => {
+      send('toggle')
     }
     const countValue = 0;
     return html`
-    <mul-button @click=${onLike}>
-        <span>➕</span>
+    <mul-button @click=${onToggle}>
+        <span>${state.value}</span>
     </mul-button>
     `
 }
