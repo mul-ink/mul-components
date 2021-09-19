@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    body {
-        background-color: #1a1212;
-    }
-</style>
 <script type="module">
-    import './demoSetup.js'
-    import { iconColor } from './cssTokens.js'
-import { hearts } from './mulHeartIcon.js'
-import { html, component, css, useCSS, assign, createMachine } from 'https://deno.land/x/mulink@0.0.25/deps.js'
-import { useMachine } from 'https://deno.land/x/mulink@0.0.25/useMachine.js'
+    import './demoButton.js'
+    import { iconColor } from 'https://deno.land/x/mulink@0.0.27/cssTokens.js'
+    import { hearts } from 'https://deno.land/x/mulink@0.0.27/mulHeartIcon.js'
+    import { html, component, css, useCSS, assign, createMachine } from 'https://deno.land/x/mulink@0.0.25/deps.js'
+    import { useMachine } from 'https://deno.land/x/mulink@0.0.27/useMachine.js'
 
-export const likeMachine = createMachine({
-    initial: 'unliked',
-    states: {
-      unliked: { on: { toggle: 'liking'}},
-      liking: { after: { 600: 'liked'} },
-      liked: { on: { toggle: 'unliking'}},
-      unliking: { after: { 600: 'unliked'}}
-    }
-  });
+    const likeMachine = createMachine({
+        initial: 'unliked',
+        states: {
+            unliked: { on: { toggle: 'liking' } },
+            liking: { after: { 600: 'liked' } },
+            liked: { on: { toggle: 'unliking' } },
+            unliking: { after: { 600: 'unliked' } }
+        }
+    });
 
-function MulHeart(element) {
-  const { state, send } = useMachine(likeMachine)
-  const onClick = () => send('toggle')
-  const heart = hearts[state.value]
-  useCSS(element, [mulHeart])
-  return html`
-    <span @click=${onClick} class="heart" id="toggle-btn">
+    function MulHeart(element) {
+        const { state, send } = useMachine(likeMachine)
+        const onClick = () => send('toggle')
+        const heart = hearts[state.value]
+        useCSS(element, [mulHeart])
+        return html`
+    <span @click=${onClick} class="heart">
       ${heart}
     </span>
   `
-}
+    }
 
-const mulHeart = css`
+    const mulHeart = css`
   .heart {
     width: 30px;
     height: 30px;
@@ -52,7 +47,15 @@ const mulHeart = css`
   }
 `
 
-customElements.define("mul-heart", component(MulHeart))
+    customElements.define("mul-heart", component(MulHeart))
 </script>
 <mul-heart></mul-heart>
+<style>
+    :root {
+        --dark-background: #1a1212;
+    }
+    body {
+        background: var(--dark-background)
+    }
+</style>
 </html>
