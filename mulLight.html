@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="importmap">
+    {
+      "imports": {
+        "./": "https://deno.land/x/mulink@0.0.29/"
+      }
+    }
+</script>
 <script type="module">
 import { html, component, createMachine } from './deps.js'
 import { useMachine } from './useMachine.js'
@@ -74,12 +81,5 @@ customElements.define('a-road', component(road))
         height: 100vh;
     }
 </style>
-<script type="importmap">
-    {
-      "imports": {
-        "./": "https://deno.land/x/mulink@0.0.29/"
-      }
-    }
-</script>
 <script async src="https://ga.jspm.io/npm:es-module-shims@0.12.8/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
 </html>
