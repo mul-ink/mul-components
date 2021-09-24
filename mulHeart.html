@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="importmap">
+    {
+      "imports": {
+        "./": "https://deno.land/x/mulink@0.0.29/"
+      }
+    }
+</script>
 <script type="module">
-    import { iconColor } from 'https://deno.land/x/mulink@0.0.29/cssTokens.js'
-    import { hearts } from 'https://deno.land/x/mulink@0.0.29/mulHeartIcon.js'
-    import { html, component, css, useCSS, assign, createMachine } from 'https://deno.land/x/mulink@0.0.25/deps.js'
-    import { useMachine } from 'https://deno.land/x/mulink@0.0.29/useMachine.js'
+    import { iconColor } from './cssTokens.js'
+    import { hearts } from './mulHeartIcon.js'
+    import { html, component, css, useCSS, assign, createMachine } from './deps.js'
+    import { useMachine } from './useMachine.js'
 
     function MulHeart(element) {
         const { state, send } = useMachine(likeMachine)
@@ -27,6 +34,16 @@
             unliking: { after: { 600: 'unliked' } }
         }
     });
+  
+    const trafficLight = createMachine({
+        initial: 'red',
+        states: {
+            green: { after: { 10000: 'yellow' } },
+            yellowRed: { after: { 1000: 'red' } },
+            red: { after: { 20000: 'yellowGreen' },
+            yellowGreen: { after: { 1000: 'green'}}}
+        }
+    });
 
     const mulHeart = css`
   .heart {
@@ -45,10 +62,22 @@
   opacity: 1;
   }
 `
-
+    
+    function light() {
+      return html`
+      <div></div>
+      <style>
+        width: 10px;
+        height: 10px;
+        background-color: red;
+      </style>
+      `
+    }
+    customElements.define('light', component(light))
     customElements.define("mul-heart", component(MulHeart))
 </script>
 <mul-heart></mul-heart>
+  <light></light>
 <style>
     :root {
         --dark-background: #1a1212;
@@ -59,8 +88,8 @@
         justify-content: center;
         align-items: center;
         background-color: var(--dark-background);
-        height: 300px;
+        height: 100vh;
     }
 </style>
-
+<script async src="https://ga.jspm.io/npm:es-module-shims@0.12.8/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
 </html>
