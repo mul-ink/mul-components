@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type="module">
+import { html, component, createMachine } from './deps.js'
+import { useMachine } from './useMachine.js'
+
+const lightsMachine = createMachine({
+    initial: 'red',
+    states: {
+        green: { after: { 1000: 'greenyellow' } },
+        greenyellow: { after: { 1000: 'red' } },
+        red: { after: { 1000: 'redyellow'}},
+        redyellow: { after: { 2000: 'green' },}
+    }
+});
+
+function road() {
+    return html`
+    🛣️
+    <style>
+        :host {
+            font-size: 7.5rem;
+        }
+    </style>
+    `
+}
+
+function light() {
+    const { state } = useMachine(lightsMachine)
+    return html`
+    <div class="red light" aria-label="Red light"></div>
+    <div class="yellow light" aria-label="Yellow light"></div>
+    <div class="green light" aria-label="Green light"></div>
+    <div class="pole" aria-label="Traffic light pole"</object>
+    <style>
+    .red{
+        background-color: ${state.value === 'red' ? 'red' : 'grey'}
+    }
+    .yellow{
+        background-color: ${state.value === 'redyellow' || state.value === 'greenyellow' ? 'yellow' : 'grey'}
+    }
+    .green{
+        background-color: ${state.value === 'green' ? 'green' : 'grey'}
+    }
+    .light {
+        margin-top: 2px;
+        width: 14px;
+        height: 11px;
+    }
+    .pole {
+        width: 2px;
+        margin-left: 6px;
+        height: 100px;
+        background-color: white;
+    }
+    </style>
+    `
+}
+customElements.define('a-light', component(light))
+customElements.define('a-road', component(road))
+</script>
+<a-road></a-road>
+<a-light></a-light>
+<style>
+    :root {
+        --dark-background: #1a1212;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--dark-background);
+        height: 100vh;
+    }
+</style>
+<script type="importmap">
+    {
+      "imports": {
+        "./": "https://deno.land/x/mulink@0.0.29/"
+      }
+    }
+</script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@0.12.8/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
+</html>
