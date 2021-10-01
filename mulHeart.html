@@ -8,47 +8,35 @@
     }
 </script>
 <script type="module">
-    import { iconColor } from './cssTokens.js'
-    import { hearts } from './mulHeartIcon.js'
-    import { html, component, css, useCSS, assign, createMachine } from './deps.js'
-    import { useMachine } from './useMachine.js'
+  import { iconColor } from './cssTokens.js'
+  import { hearts } from './mulHeartIcon.js'
+  import { html, component, css, useCSS, assign, createMachine } from './deps.js'
+  import { useMachine } from './useMachine.js'
 
-    function MulHeart(element) {
-        const { state, send } = useMachine(likeMachine)
-        const onClick = () => send('toggle')
-        const heart = hearts[state.value]
-        useCSS(element, [mulHeart])
-        return html`
+  function MulHeart(element) {
+    const { state, send } = useMachine(likeMachine)
+    const onClick = () => send('toggle')
+    const heart = hearts[state.value]
+    useCSS(element, [mulHeart])
+    return html`
     <span @click=${onClick} class="heart">
       ${heart}
     </span>
   `
+  }
+
+  const likeMachine = createMachine({
+    initial: 'unliked',
+    states: {
+      unliked: { on: { toggle: 'liking' } },
+      liking: { after: { 600: 'liked' } },
+      liked: { on: { toggle: 'unliking' } },
+      unliking: { after: { 600: 'unliked' } }
     }
+  });
 
-    const likeMachine = createMachine({
-        initial: 'unliked',
-        states: {
-            unliked: { on: { toggle: 'liking' } },
-            liking: { after: { 600: 'liked' } },
-            liked: { on: { toggle: 'unliking' } },
-            unliking: { after: { 600: 'unliked' } }
-        }
-    });
-  
-    const trafficLight = createMachine({
-        initial: 'red',
-        states: {
-            green: { after: { 10000: 'yellow' } },
-            yellowRed: { after: { 1000: 'red' } },
-            red: { after: { 20000: 'yellowGreen' },
-            yellowGreen: { after: { 1000: 'green'}}}
-        }
-    });
-
-    const mulHeart = css`
+  const mulHeart = css`
   .heart {
-    width: 30px;
-    height: 30px;
     cursor: pointer;
     opacity: 0.6;
     display: block;
@@ -62,34 +50,23 @@
   opacity: 1;
   }
 `
-    
-    function light() {
-      return html`
-      <div></div>
-      <style>
-        width: 10px;
-        height: 10px;
-        background-color: red;
-      </style>
-      `
-    }
-    customElements.define('light', component(light))
-    customElements.define("mul-heart", component(MulHeart))
+  customElements.define("mul-heart", component(MulHeart))
 </script>
 <mul-heart></mul-heart>
-  <light></light>
 <style>
-    :root {
-        --dark-background: #1a1212;
-    }
+  :root {
+    --dark-background: #1a1212;
+  }
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--dark-background);
-        height: 100vh;
-    }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-background);
+    height: 100vh;
+  }
 </style>
-<script async src="https://ga.jspm.io/npm:es-module-shims@0.12.8/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@0.12.8/dist/es-module-shims.min.js"
+  crossorigin="anonymous"></script>
+
 </html>
