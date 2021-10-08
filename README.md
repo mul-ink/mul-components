@@ -1,2 +1,2 @@
 # mulink
-Components of mul.ink
+Functional Web Components
