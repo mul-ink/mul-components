@@ -404,10 +404,3 @@ export const heartLiking = html`
     </g>
   </svg>
 `;
-
-export const hearts = {
-  unliked: heartUnliked,
-  unliking: heartUnliking,
-  liked: heartLiked,
-  liking: heartLiking,
-};
