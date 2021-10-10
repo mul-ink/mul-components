@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="importmap">
-    {
+<!-- <script type="importmap">
+  {
       "imports": {
         "./": "https://deno.land/x/mulink@0.0.29/"
       }
-    }
-</script>
+  }
+</script> -->
 <script type="module">
   import { iconColor } from './cssTokens.js'
-  import { hearts } from './mulHeartIcon.js'
-  import { html, component, css, useCSS, assign, createMachine } from './deps.js'
+  import { heartLiked, heartLiking, heartUnliked, heartUnliking } from './mulHeartIcon.js'
+  import { html, component, css, useCSS, assign,createMachine } from './deps.js'
   import { useMachine } from './useMachine.js'
+  import { inspect } from './browser.js'
+
+  inspect({
+  url: "https://statecharts.io/inspect",
+  iframe: false
+  });
 
   function MulHeart(element) {
-    const { state, send } = useMachine(likeMachine)
+    const likeMachine = createMachine({
+    id: 'heart',
+    initial: 'unliked',
+    states: {
+      unliked: { on: { toggle: 'liking' }},
+      liking: { after: { 600: 'liked' }},
+      liked: { on: { toggle: 'unliking'}},
+      unliking: { after: { 600: 'unliked'}}
+    }
+  });
+    const { state, send } = useMachine(likeMachine, { devTools: true })
     const onClick = () => send('toggle')
+    const hearts = {
+      unliked: heartUnliked,
+      unliking: heartUnliking,
+      liked: heartLiked,
+      liking: heartLiking,
+    };
     const heart = hearts[state.value]
     useCSS(element, [mulHeart])
     return html`
@@ -24,17 +46,6 @@
     </span>
   `
   }
-
-  const likeMachine = createMachine({
-    initial: 'unliked',
-    states: {
-      unliked: { on: { toggle: 'liking' } },
-      liking: { after: { 600: 'liked' } },
-      liked: { on: { toggle: 'unliking' } },
-      unliking: { after: { 600: 'unliked' } }
-    }
-  });
-
   const mulHeart = css`
   .heart {
     cursor: pointer;
@@ -61,7 +72,5 @@
     height: 100vh;
   }
 </style>
-<script async src="https://ga.jspm.io/npm:es-module-shims@0.12.8/dist/es-module-shims.min.js"
-  crossorigin="anonymous"></script>
-
+<script async src="https://ga.jspm.io/npm:es-module-shims@0.12.8/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
 </html>
