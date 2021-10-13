@@ -53,7 +53,7 @@ const getFinalOptions = options => {
   };
 };
 
-export function inspect(options) {
+export function inspect(options = { url: "https://statecharts.io/inspect", iframe: false }) {
   const {
     iframe,
     url,
