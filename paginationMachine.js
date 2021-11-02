@@ -1,4 +1,4 @@
-import { assign, createMachine, choose } from './deps.js';
+import { assign, createMachine, actions } from './deps.js';
 const paginationMachine = createMachine({
   id: 'pagination',
   initial: 'awaitingTotalPages',
@@ -8,7 +8,7 @@ const paginationMachine = createMachine({
   on: {
     UPDATE_TOTAL_PAGES: {
       cond: 'newTotalPagesIsValidValue',
-      actions: choose([{
+      actions: actions.choose([{
         cond: 'currentPageIsAboveNewTotalPages',
         actions: ['assignTotalPagesToContext', 'goToFirstPage']
       }, {
