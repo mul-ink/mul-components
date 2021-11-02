@@ -1,5 +1,4 @@
-import { assign, createMachine } from 'xstate';
-import { choose } from 'xstate/lib/actions';
+import { assign, createMachine, choose } from './deps.js';
 const paginationMachine = createMachine({
   id: 'pagination',
   initial: 'awaitingTotalPages',
