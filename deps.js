@@ -3,5 +3,4 @@ export {  render, html, component, useState, useEffect, useLayoutEffect, useRef,
 export { useCSS } from './useCSS.js'
 export { usePlugins } from './usePlugins.js'
 export { useTextFolding } from './useTextFolding.js'
-export { createMachine, interpret, assign, State } from 'https://cdn.skypack.dev/xstate'
-export { choose } from 'https://cdn.skypack.dev/xstate/actions'
+export { createMachine, interpret, assign, State, actions } from 'https://cdn.skypack.dev/xstate'
