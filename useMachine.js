@@ -8,16 +8,13 @@ export function useMachine(machine, options = {}) {
   const [state, setState] = createStore({
     ...service.initialState,
     matches(...args) {
-      // access state to track on value access
       state.value;
       return service.state.matches(...args);
     }
   });
   service.onTransition((s) => {
-    // only focus on stuff that actually changes
     batch(() => {
       setState("value", s.value);
-      // diff data to only update values that changes
       setState("context", reconcile(s.context));
     });
   });
