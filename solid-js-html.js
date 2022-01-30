@@ -1,5 +1,5 @@
-import {b as style, i as insert, s as spread, c as delegateEvents, e as classList, d as dynamicProperty, f as setAttribute, g as setAttributeNS, h as addEventListener, A as Aliases, P as PropAliases, j as Properties, C as ChildProperties, D as DelegatedEvents, S as SVGElements, k as SVGNamespace} from "../common/web-a241df01.js";
-import {d as createRenderEffect, c as createComponent, m as mergeProps} from "../common/solid-c79d552e.js";
+import {b as style, i as insert, s as spread, c as delegateEvents, e as classList, d as dynamicProperty, f as setAttribute, g as setAttributeNS, h as addEventListener, A as Aliases, P as PropAliases, j as Properties, C as ChildProperties, D as DelegatedEvents, S as SVGElements, k as SVGNamespace} from "./solid-js-web-common.js";
+import {d as createRenderEffect, c as createComponent, m as mergeProps} from "./solid-js-common.js";
 var attrRE, lookup, parseTag, pushCommentNode, pushTextNode, tagRE;
 tagRE = /(?:<!--[\S\s]*?-->|<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>)/g;
 attrRE = /\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;
