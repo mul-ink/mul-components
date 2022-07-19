@@ -1,6 +1,6 @@
 /// hello-scriplet.js
 (function() {
-    console.log('Hello scriplet!');    
+    console.log('Hello scriplet 16!');    
 })();
 
 // https://github.com/uBlockOrigin/uAssets/issues/913
