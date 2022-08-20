@@ -15,7 +15,7 @@
     });
 })();
 (function() {
-    const categoriesToHide = '{{1}}';  // Optional argument to filter posts by their category
+    const categoriesToHide = '{{1}}';
     const setOfCategoriesToHide = (( ) => {
         if ( categoriesToHide === '' || categoriesToHide === '{{1}}' ) { return new Set(); }
         return new Set(categoriesToHide.split(/\s*\|\s*/).map(s => s.toUpperCase()));
